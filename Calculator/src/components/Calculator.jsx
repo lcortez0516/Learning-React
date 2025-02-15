@@ -1,9 +1,17 @@
 import React from "react";
 import "../style.css";
-import { useState } from "react";
+import { useState, useReducer } from "react";
 
 const Calculator = () => {
   const [input, setInput] = useState("");
+  const [answer, setAnswer] = useState(0);
+
+  const calculate = () => {
+    if (!input.length) return;
+
+    eval(input) && setAnswer(eval(input));
+    setInput("");
+  };
 
   return (
     <div className="container">
@@ -12,7 +20,8 @@ const Calculator = () => {
         onChange={(e) => setInput(e.target.value)}
         value={input}
       />
-      <button>=</button>
+      <button onClick={calculate}>=</button>
+      <p>{answer}</p>
     </div>
   );
 };
