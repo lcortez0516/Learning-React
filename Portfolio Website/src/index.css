@@ -1,0 +1,50 @@
+/* fonts */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@import "tailwindcss";
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #202020;
+  color: white;
+}
+
+@theme {
+  --color-custom-black: #202020;
+  --color-custom-red: #f50e32;
+}
+
+@layer base {
+  h1 {
+    @apply text-xl lg:text-3xl text-custom-red;
+  }
+  h2 {
+    @apply text-5xl font-semibold;
+  }
+}
+
+@layer components {
+  .sub-heading {
+    @apply text-lg lg:text-xl text-gray-300;
+  }
+
+  .btn-primary {
+    @apply bg-custom-red hover:bg-white hover:text-custom-red cursor-pointer px-8 py-3 rounded-lg mt-5;
+  }
+
+  .img-component-size {
+    @apply w-full h-[450px] lg:h-[500px] rounded-lg;
+  }
+}
+
+@layer utilities {
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+  .flex-start {
+    @apply flex justify-center items-start;
+  }
+  .flex-between {
+    @apply flex justify-between items-start;
+  }
+}
