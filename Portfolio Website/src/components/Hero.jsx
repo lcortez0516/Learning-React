@@ -38,18 +38,17 @@ const Hero = () => {
         data-aos-delay="600"
         className="lg:w-2/5 w-full relative"
       >
-        <div className="bg-[#2f2f2f] lg:w-[400px] img-component-size absolute top-[30px] -left-[30px]">
-          <img
-            src={hero}
-            alt="image of a man"
-            className="lg:w-[520px] img-component-size relative z-20"
-          />
-          <img
-            src={design}
-            alt=""
-            className="absolute  -top-7 -right-7 rounded-lg z-10"
-          />
-        </div>
+        <div className="bg-[#2f2f2f] lg:w-[400px] img-component-size absolute top-[30px] -left-[30px]"></div>
+        <img
+          src={hero}
+          alt="image of a man"
+          className="lg:w-[520px] img-component-size relative z-20"
+        />
+        <img
+          src={design}
+          alt=""
+          className="absolute -top-7 -right-7 rounded-lg z-10"
+        />
       </div>
     </div>
   );
