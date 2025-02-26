@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@import "tailwindcss";
+/* font */
+
+body {
+  background-color: #293035;
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+}
+
+@theme {
+  --color-deep-orange: #ed5f44;
+  --color-dirty-grey: #587c78;
+  --color-dirty-yellow: #e4c142;
+  --color-dirty-black: #292926;
+}
+
+@layer base {
+  li {
+    @apply text-sm tracking-tight cursor-pointer;
+  }
+
+  h1 {
+    @apply text-6xl;
+  }
+  p {
+    @apply text-sm text-slate-100;
+  }
+}
+
+@layer utilities {
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+
+  .flex-between {
+    @apply flex justify-between items-center;
+  }
+
+  .container {
+    @apply w-full p-5 lg:w-[90%] lg:mx-auto;
+  }
+}
+
+@layer components {
+  .btn-secondary {
+    @apply px-8 py-3 border text-deep-orange border-deep-orange cursor-pointer rounded-lg;
+  }
+
+  .btn-primary {
+    @apply px-8 py-3 bg-deep-orange text-dirty-black rounded-lg cursor-pointer;
+  }
+}
