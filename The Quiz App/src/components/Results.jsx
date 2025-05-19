@@ -1,31 +1,29 @@
 import React from 'react'
+import { quizBank } from '../constants/quizBank.js'
 
-const Results = ({userAnswers, questionBank}) => {
+const Results = ({answers, restartQuiz}) => {
 
-    
-    const score = () => {
+    let score = 0;
+    answers.forEach((answer, index)=> {
+        if(answer === quizBank[index].answer){
+            score++
+        }
+    })
 
 
-        let finalScore = 0;
-        userAnswers.forEach((answer, index)=> {
-            if(answer === questionBank[index].answer){
-                finalScore++;
-            }
-        })
-
-        return finalScore;
-    }
-
-    const handleRestart = () => {
-
+    // reset Quiz
+    const resetQuiz = ()=> {
+        restartQuiz(false)
     }
 
   return (
+
     <div>
-        <h2>Quiz Completed</h2>
-        <p>Your Score: {score()}/{questionBank.length}</p>
-        <button className='restart-button' onClick={handleRestart}> Restart Quiz</button>
+    <h2>Results</h2>
+    <p className='score'>Score: {score}/{quizBank.length}</p>
+    <button className='restart-button' onClick={resetQuiz}>Reset Quiz</button>
     </div>
+    
   )
 }
 
