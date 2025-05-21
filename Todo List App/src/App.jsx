@@ -1,30 +1,47 @@
 import React, { useState } from 'react'
+import Item from './components/Item'
 
 const App = () => {
+// input
+const [input, setInput] = useState("")
+// list
+const [list, setList] = useState([])
 
-  // list of tasks
-  const [tasks, setTasks] = useState([])
-  // input
-  const [inputTask, setInputTask] = useState("")
 
-
-  // Add Task
-  const addTask = () => {
-    // Change add the new Task
-    const tasksCopy = tasks
-    tasksCopy.push(inputTask)
-    setTasks(tasksCopy)
+// input state
+const handleInput = (e)=> {
+  setInput(e.target.value)
+}
+// add task
+const handleAddTask = ()=> {
+  if(input !== ""){
+  const id = list.length === 0 ? 1 : list[list.length-1].id + 1
+  setList([...list, {id: id, item: input}])
+  setInput("")
   }
-  return (
-    <div>
-      <div>
-        <input type="text" placeholder='Add New Task' value={inputTask} onChange={(e)=> {setInputTask(e.target.value)}}/>
-        <button onClick={addTask}>Add Task</button>
-      </div>
-      <div className="list">
+}
+// delete functionality
+const handleDelete = (id)=> {
+  setList(list.filter((item)=> item.id!==id))
+}
 
-      </div>
+// update functionality
+const handleEdit = (id)=> {
+ 
+
+}
+
+  return (
+    <div>    
+    <div className='add-task'>
+      <input type="text" value={input} placeholder='Add New Task' onChange={(e)=> handleInput(e)}/>
+      <button onClick={handleAddTask}>Add Task</button>
     </div>
+    <div className='list'>
+      <Item list={list} handleDelete={handleDelete} handleEdit={handleEdit}/>
+    </div>
+    </div>
+
   )
 }
 
