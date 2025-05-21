@@ -1,0 +1,12 @@
+.delete-btn{
+    background: rgb(204, 41, 41);
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.task-group{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}

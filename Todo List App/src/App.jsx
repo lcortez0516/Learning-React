@@ -11,18 +11,21 @@ const App = () => {
   // Add Task
   const addTask = () => {
     // Change add the new Task
-    const tasksCopy = tasks
-    tasksCopy.push(inputTask)
-    setTasks(tasksCopy)
+    setTasks([...tasks, inputTask])
   }
+
+  // handleDelete 
+
   return (
     <div>
       <div>
-        <input type="text" placeholder='Add New Task' value={inputTask} onChange={(e)=> {setInputTask(e.target.value)}}/>
+        <input type="text" placeholder='Add New Task' onChange={(e)=> {setInputTask(e.target.value)}}/>
         <button onClick={addTask}>Add Task</button>
       </div>
       <div className="list">
-
+      {tasks.map((tasks, index)=> (
+        <div key={index} className='task-group'><p>{tasks}</p><button className='delete-btn'>X</button></div>
+      ))}
       </div>
     </div>
   )
