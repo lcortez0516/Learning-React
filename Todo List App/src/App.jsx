@@ -15,7 +15,14 @@ const App = () => {
   }
 
   // handleDelete 
+  const handleDelete = (item) => {
+   const newArr = tasks.filter((task)=> task!==item)
+   setTasks(newArr)
+   console.log(tasks)
+  }
 
+
+  
   return (
     <div>
       <div>
@@ -23,8 +30,8 @@ const App = () => {
         <button onClick={addTask}>Add Task</button>
       </div>
       <div className="list">
-      {tasks.map((tasks, index)=> (
-        <div key={index} className='task-group'><p>{tasks}</p><button className='delete-btn'>X</button></div>
+      {tasks.map((task, index)=> (
+        <div key={index} className='task-group'><p>{task}</p><button className='delete-btn' onClick={()=> handleDelete(task)}>X</button></div>
       ))}
       </div>
     </div>
