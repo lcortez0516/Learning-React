@@ -2,34 +2,47 @@ import { useEffect, useState } from "react"
 
 const App = () => {
 
-  const [data, setData] = useState([])
+  const [data, setData] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
-  const [isloading, setIsLoading] = useState(true)
 
-// abort controller
-const controller = new AbortController();
-  // basic fetch + useEffect
+  const controller = new AbortController()
 
-  useEffect(()=> {
-    fetch('https://jsonplaceholder.typicode.com/users', {signal: controller.signal})
-    .then(res=> {
-      if(!res.ok){
-        throw new Error('Network error')
+  useEffect(async ()=> {
+
+      try {
+         const res = await fetch('https://jsonplaceholder.typicode.com/users',{
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer KEY'
+          },
+          body: JSON.stringify({
+            username: 'Lester',
+            password: 'password'
+          })
+         }, {signal: controller})
+         if(!res.ok){
+          throw new Error('Network Error')
+         }
+         const data = await res.json()
+         if(data) {
+          setData(data)
+         }else{
+          setError('There was a problem with the data')
+         }
+         
+      } catch (error) {
+        console.error('Fetch failed: ', error.message)
       }
-       return res.json()
-    })
-    .then(data => {
-      setData(data)
-      setIsLoading(!isloading)
-    })
-    .catch(error=> {
-      setError(error)
-      setIsLoading(!loading)
-    })
+   
 
-    return ()=> controller.abort()
+    return () => {
+      controller.abort()
+    }
   }, [])
- 
+
+
 
 
   return (
